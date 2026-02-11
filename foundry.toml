@@ -10,7 +10,7 @@ optimizer_runs = 200
 
 remappings = [
     "@openzeppelin/=lib/openzeppelin-contracts/",
-    "@chaninlink/=lib/chainlink",
+    "@chainlink/=lib/chainlink-evm/",
     "@forge-std/=lib/forge-std",
     "@forge-std/=lib/forge-std/src/"
 ]
