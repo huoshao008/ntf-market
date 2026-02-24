@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/token/common/ERC2981.sol";
     @dev NFT合约实现，支持铸造，元数据管理和供应量控制
     @notice 使用OpenZeppelin库实现标准ERC721,继承ERC2981接口，实现版税功能
 */
-contract MyNET is ERC721,ERC721URIStorage,Ownable,ERC2981 {
+contract MyNFT is ERC721,ERC721URIStorage,Ownable,ERC2981 {
     //Token ID计数器
     uint256 private _tokenIdCounter;
 
@@ -36,7 +36,7 @@ contract MyNET is ERC721,ERC721URIStorage,Ownable,ERC2981 {
 
     /**
      * @dev 构造函数
-     * @notice 初始化MFT集合和符号，设置合约所有者
+     * @notice 初始化NFT集合和符号，设置合约所有者
      */
      constructor(address royaltReceiver,uint96 royaltyBps) ERC721("LspNFT","SPNFT") Ownable(msg.sender){
         require(royaltReceiver != address(0),"Invalid royalty receiver");
@@ -88,7 +88,7 @@ contract MyNET is ERC721,ERC721URIStorage,Ownable,ERC2981 {
 
         //触发事件
         emit NFTMinted(msg.sender, newTokenId, uri);
-
+        
         return newTokenId;
      }
 
@@ -144,6 +144,14 @@ contract MyNET is ERC721,ERC721URIStorage,Ownable,ERC2981 {
      */
      function setMintPrice(uint256 newPrice)public onlyOwner{
         minPrice = newPrice;
+    }
+
+    /**
+     * @dev
+     */
+     function temp()public view returns(uint256){
+        uint256 balance = address(this).balance;
+        return balance;
     }
 
      
